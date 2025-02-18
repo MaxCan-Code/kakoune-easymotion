@@ -55,7 +55,7 @@ def easy-motion-on-regex -params 1..4 %{
     set-option window _scrolloff %opt{scrolloff}
     set-option window scrolloff 0,0
 
-    exec <space>G %arg{2} <a-\;>s( %arg{1} )|\n<ret> ) <a-:>
+    exec <,>G %arg{2} <a-\;>s( %arg{1} )|\n<ret> ) <a-:>
     easy-motion-on-selections %arg{2} %arg{3} %arg{4}
 
     hook window -once NormalKey .* %{
@@ -139,7 +139,6 @@ pydef 'easy-motion-on-selections -params ..3' '%opt{em_jumpchars}^%val{timestamp
         return ' '.join(out + [q(';_easy-motion-rmhl;' + callback_cancel)])
     return "\n".join((
         "select " + first,
-        "_easy-motion-rmhl",
         "_easy-motion-addhl",
         "set window em_fg " + fg,
         dfs('')))
